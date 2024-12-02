@@ -1,6 +1,6 @@
 # JSF portlet working in Liferay Portal 7.4 GA37 but not in GA125
 
-## Steps for verifying functionality in 7.4 GA37
+## Steps for verifying the functionality in 7.4 GA37
 
 1. Create workspace. Clone and deploy the app.
     ```
