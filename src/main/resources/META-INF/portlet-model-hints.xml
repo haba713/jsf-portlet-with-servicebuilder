@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.example.inventory.model.Product">
+		<field name="id" type="long" />
+		<field name="code" type="String" />
+		<field name="name" type="String" />
+	</model>
+</model-hints>

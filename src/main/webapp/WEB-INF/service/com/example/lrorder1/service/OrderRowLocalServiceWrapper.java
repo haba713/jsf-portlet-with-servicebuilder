@@ -1,0 +1,275 @@
+/**
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
+package com.example.inventory.service;
+
+import aQute.bnd.annotation.ProviderType;
+
+import com.liferay.portal.kernel.service.ServiceWrapper;
+
+/**
+ * Provides a wrapper for {@link OrderRowLocalService}.
+ *
+ * @author Brian Wing Shun Chan
+ * @see OrderRowLocalService
+ * @generated
+ */
+@ProviderType
+public class OrderRowLocalServiceWrapper implements OrderRowLocalService,
+	ServiceWrapper<OrderRowLocalService> {
+	public OrderRowLocalServiceWrapper(
+		OrderRowLocalService orderRowLocalService) {
+		_orderRowLocalService = orderRowLocalService;
+	}
+
+	/**
+	* Adds the order row to the database. Also notifies the appropriate model listeners.
+	*
+	* @param orderRow the order row
+	* @return the order row that was added
+	*/
+	@Override
+	public com.example.inventory.model.OrderRow addOrderRow(
+		com.example.inventory.model.OrderRow orderRow) {
+		return _orderRowLocalService.addOrderRow(orderRow);
+	}
+
+	/**
+	* Creates a new order row with the primary key. Does not add the order row to the database.
+	*
+	* @param orderRowId the primary key for the new order row
+	* @return the new order row
+	*/
+	@Override
+	public com.example.inventory.model.OrderRow createOrderRow(
+		long orderRowId) {
+		return _orderRowLocalService.createOrderRow(orderRowId);
+	}
+
+	/**
+	* Deletes the order row with the primary key from the database. Also notifies the appropriate model listeners.
+	*
+	* @param orderRowId the primary key of the order row
+	* @return the order row that was removed
+	* @throws PortalException if a order row with the primary key could not be found
+	*/
+	@Override
+	public com.example.inventory.model.OrderRow deleteOrderRow(
+		long orderRowId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _orderRowLocalService.deleteOrderRow(orderRowId);
+	}
+
+	/**
+	* Deletes the order row from the database. Also notifies the appropriate model listeners.
+	*
+	* @param orderRow the order row
+	* @return the order row that was removed
+	*/
+	@Override
+	public com.example.inventory.model.OrderRow deleteOrderRow(
+		com.example.inventory.model.OrderRow orderRow) {
+		return _orderRowLocalService.deleteOrderRow(orderRow);
+	}
+
+	/**
+	* @throws PortalException
+	*/
+	@Override
+	public com.liferay.portal.kernel.model.PersistedModel deletePersistedModel(
+		com.liferay.portal.kernel.model.PersistedModel persistedModel)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _orderRowLocalService.deletePersistedModel(persistedModel);
+	}
+
+	@Override
+	public com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery() {
+		return _orderRowLocalService.dynamicQuery();
+	}
+
+	/**
+	* Performs a dynamic query on the database and returns the matching rows.
+	*
+	* @param dynamicQuery the dynamic query
+	* @return the matching rows
+	*/
+	@Override
+	public <T> java.util.List<T> dynamicQuery(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
+		return _orderRowLocalService.dynamicQuery(dynamicQuery);
+	}
+
+	/**
+	* Performs a dynamic query on the database and returns a range of the matching rows.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.example.inventory.model.impl.OrderRowModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param dynamicQuery the dynamic query
+	* @param start the lower bound of the range of model instances
+	* @param end the upper bound of the range of model instances (not inclusive)
+	* @return the range of matching rows
+	*/
+	@Override
+	public <T> java.util.List<T> dynamicQuery(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
+		int end) {
+		return _orderRowLocalService.dynamicQuery(dynamicQuery, start, end);
+	}
+
+	/**
+	* Performs a dynamic query on the database and returns an ordered range of the matching rows.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.example.inventory.model.impl.OrderRowModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param dynamicQuery the dynamic query
+	* @param start the lower bound of the range of model instances
+	* @param end the upper bound of the range of model instances (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching rows
+	*/
+	@Override
+	public <T> java.util.List<T> dynamicQuery(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator) {
+		return _orderRowLocalService.dynamicQuery(dynamicQuery, start, end,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the number of rows matching the dynamic query.
+	*
+	* @param dynamicQuery the dynamic query
+	* @return the number of rows matching the dynamic query
+	*/
+	@Override
+	public long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
+		return _orderRowLocalService.dynamicQueryCount(dynamicQuery);
+	}
+
+	/**
+	* Returns the number of rows matching the dynamic query.
+	*
+	* @param dynamicQuery the dynamic query
+	* @param projection the projection to apply to the query
+	* @return the number of rows matching the dynamic query
+	*/
+	@Override
+	public long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
+		com.liferay.portal.kernel.dao.orm.Projection projection) {
+		return _orderRowLocalService.dynamicQueryCount(dynamicQuery, projection);
+	}
+
+	@Override
+	public com.example.inventory.model.OrderRow fetchOrderRow(long orderRowId) {
+		return _orderRowLocalService.fetchOrderRow(orderRowId);
+	}
+
+	@Override
+	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery() {
+		return _orderRowLocalService.getActionableDynamicQuery();
+	}
+
+	@Override
+	public com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery getIndexableActionableDynamicQuery() {
+		return _orderRowLocalService.getIndexableActionableDynamicQuery();
+	}
+
+	/**
+	* Returns the order row with the primary key.
+	*
+	* @param orderRowId the primary key of the order row
+	* @return the order row
+	* @throws PortalException if a order row with the primary key could not be found
+	*/
+	@Override
+	public com.example.inventory.model.OrderRow getOrderRow(long orderRowId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _orderRowLocalService.getOrderRow(orderRowId);
+	}
+
+	/**
+	* Returns a range of all the order rows.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.example.inventory.model.impl.OrderRowModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param start the lower bound of the range of order rows
+	* @param end the upper bound of the range of order rows (not inclusive)
+	* @return the range of order rows
+	*/
+	@Override
+	public java.util.List<com.example.inventory.model.OrderRow> getOrderRows(
+		int start, int end) {
+		return _orderRowLocalService.getOrderRows(start, end);
+	}
+
+	/**
+	* Returns the number of order rows.
+	*
+	* @return the number of order rows
+	*/
+	@Override
+	public int getOrderRowsCount() {
+		return _orderRowLocalService.getOrderRowsCount();
+	}
+
+	/**
+	* Returns the OSGi service identifier.
+	*
+	* @return the OSGi service identifier
+	*/
+	@Override
+	public String getOSGiServiceIdentifier() {
+		return _orderRowLocalService.getOSGiServiceIdentifier();
+	}
+
+	@Override
+	public com.liferay.portal.kernel.model.PersistedModel getPersistedModel(
+		java.io.Serializable primaryKeyObj)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _orderRowLocalService.getPersistedModel(primaryKeyObj);
+	}
+
+	/**
+	* Updates the order row in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
+	*
+	* @param orderRow the order row
+	* @return the order row that was updated
+	*/
+	@Override
+	public com.example.inventory.model.OrderRow updateOrderRow(
+		com.example.inventory.model.OrderRow orderRow) {
+		return _orderRowLocalService.updateOrderRow(orderRow);
+	}
+
+	@Override
+	public OrderRowLocalService getWrappedService() {
+		return _orderRowLocalService;
+	}
+
+	@Override
+	public void setWrappedService(OrderRowLocalService orderRowLocalService) {
+		_orderRowLocalService = orderRowLocalService;
+	}
+
+	private OrderRowLocalService _orderRowLocalService;
+}

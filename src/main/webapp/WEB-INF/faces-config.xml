@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<faces-config version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+	<application>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+		</locale-config>
+		<!-- 
+		<resource-handler>com.example.inventory.PortletResourceHandler</resource-handler>
+		-->
+		<view-handler>com.example.inventory.PortletViewHandler</view-handler>		
+	</application>
+	<managed-bean>
+		<managed-bean-name>Edit</managed-bean-name>
+		<managed-bean-class>com.example.inventory.Edit</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>View</managed-bean-name>
+		<managed-bean-class>com.example.inventory.View</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<from-view-id>/WEB-INF/views/view.jsp</from-view-id>
+		<navigation-case>
+			<from-action>#{View.addProduct}</from-action>
+			<from-outcome>ok</from-outcome>
+			<to-view-id>/WEB-INF/views/view.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+    <sql id="com.example.inventory.service.persistence.OrderFinder.findPreviousOrder">
+        select
+        	OrderForm_Order.*
+        from
+        	OrderForm_Order
+        where
+            groupId = ?
+        	and storeCustomerNumber = ?
+        order by
+        	orderId desc
+    </sql>
+    <sql id="com.example.inventory.service.persistence.OrderRowFinder.findPreviousOrderAmounts">
+        select
+        	r.productcode as "ProductCode"
+        	,sum(r.orderamount) as "OrderAmount"
+        from
+        	orderform_orderrow as r
+        join orderform_order as o on
+        	o.orderid = r.orderid
+        	and r.orderamount != 0        		
+        where
+            o.groupId = ?
+        	and o.orderdate >= ?
+        	and o.storecustomernumber = ?
+        group by
+        	r.productcode
+ 	</sql>
+    <sql id="com.example.inventory.service.persistence.OrderRowFinder.findPreviousDeliveryAmounts">
+        select
+          r.productcode as "ProductCode"
+          ,sum(r.deliveredamount) as "DeliveredAmount"
+          ,sum(r.returnedamount) as "ReturnedAmount"
+        from
+          orderform_orderrow as r
+        join orderform_order as o on
+          o.orderid = r.orderid
+          and (r.deliveredamount != 0 or r.returnedamount != 0)            
+        where
+            o.groupId = ?
+          and o.orderdate >= ?
+          and o.storecustomernumber = ?
+        group by
+          r.productcode
+    </sql>
+    <sql id="com.example.inventory.service.persistence.OrderRowFinder.findPreviousOrderData">
+        select
+          r.productcode as "ProductCode"
+          ,r.productname as "ProductName"
+          ,sum(r.orderamount) as "OrderAmount"
+        from
+          orderform_orderrow as r
+        join orderform_order as o on
+          o.orderid = r.orderid
+          and r.orderamount != 0            
+        where
+            o.groupId = ?
+          and o.orderdate >= ?
+          and o.storecustomernumber = ?
+        group by
+          r.productcode,
+          r.productname
+  </sql>
+</custom-sql>

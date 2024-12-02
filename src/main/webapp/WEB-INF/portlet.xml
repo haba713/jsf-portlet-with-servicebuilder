@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
+  <portlet>
+    <portlet-name>InventoryPortlet</portlet-name>
+    <display-name>InventoryPortlet</display-name>
+    <portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+    <init-param>
+      <name>javax.portlet.faces.defaultViewId.view</name>
+      <value>/WEB-INF/views/view.jsp</value>
+    </init-param>
+    <init-param>
+      <name>javax.portlet.faces.defaultViewId.edit</name>
+      <value>/WEB-INF/views/edit.jsp</value>
+    </init-param>
+    <expiration-cache>0</expiration-cache>
+    <supports>
+      <mime-type>text/html</mime-type>
+      <portlet-mode>VIEW</portlet-mode>
+      <portlet-mode>EDIT</portlet-mode>
+      <!-- <portlet-mode>HELP</portlet-mode> -->
+    </supports>
+    <portlet-info>
+      <title>Inventory Portlet</title>
+      <short-title>Inventory Portlet</short-title>
+      <keywords>Inventory</keywords>
+    </portlet-info>
+    <portlet-preferences>
+      <preference>
+        <name>availableRoles</name>
+        <value></value>
+      </preference>
+      <preference>
+        <name>locales</name>
+        <value>en_US,fi_FI</value>
+      </preference>
+    </portlet-preferences>
+    <security-role-ref>
+      <role-name>administrator</role-name>
+    </security-role-ref>
+    <security-role-ref>
+      <role-name>guest</role-name>
+    </security-role-ref>
+    <security-role-ref>
+      <role-name>power-user</role-name>
+    </security-role-ref>
+    <security-role-ref>
+      <role-name>user</role-name>
+    </security-role-ref>
+  </portlet>
+</portlet-app>
