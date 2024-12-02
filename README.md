@@ -22,8 +22,18 @@
 ## Steps for reproducing the issue in 7.4 GA125
 
 1. Repeat the procedure above but when initializing workspace use the quarterly
-release `blade init -v portal-7.4-ga125`.
-2. See the exception in `catalina.out` when reloading the page.
+   release `blade init -v portal-7.4-ga125`.
+2. See the exception below in `catalina.out` when reloading the page.
+
+```
+com.liferay.portal.kernel.exception.SystemException: com.liferay.portal.kernel.dao.orm.ORMException: java.lang.IllegalArgumentException: org.hibernate.QueryException: in expected: product [SELECT product FROM Product product ORDER BY product.id ASC]
+at com.liferay.portal.kernel.service.persistence.impl.BasePersistenceImpl.processException(BasePersistenceImpl.java:635)
+at com.example.inventory.service.persistence.impl.ProductPersistenceImpl.findAll(ProductPersistenceImpl.java:1019)
+at com.example.inventory.service.persistence.impl.ProductPersistenceImpl.findAll(ProductPersistenceImpl.java:937)
+at com.example.inventory.service.persistence.impl.ProductPersistenceImpl.findAll(ProductPersistenceImpl.java:918)
+at com.example.inventory.service.base.ProductLocalServiceBaseImpl.getProducts(ProductLocalServiceBaseImpl.java:341)
+...
+```
 
 ## LiferayPropertyAccessor
 
