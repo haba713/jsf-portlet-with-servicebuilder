@@ -10,8 +10,8 @@
     blade server init
     blade server start
     cd modules/
-    git clone git@github.com:haba713/jsf-portlet-with-servicebuilder.git
-    cd jsf-portlet-with-servicebuilder/
+    git clone git@github.com:haba713/jsf-portlet-with-servicebuilder.git inventory
+    cd inventory/
     blade deploy
     ```
 2. Create a new widget page and add "Inventory Portlet" from the sample
