@@ -1,5 +1,4 @@
 apply plugin: 'war'
-apply plugin: 'com.liferay.portal.tools.service.builder'
 
 sourceCompatibility = 11
 targetCompatibility = 11
@@ -8,7 +7,6 @@ buildscript {
     dependencies {
         classpath group: "com.liferay", name: "com.liferay.css.builder", version: "3.0.2"
         classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "5.0.1"
-        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "3.1.0"
     }
 
     repositories {
@@ -19,16 +17,10 @@ buildscript {
 }
 
 dependencies {
-    implementation group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.ext', version: '5.1.0'
-    runtimeOnly group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.impl', version: '4.1.0'
-    implementation group: 'log4j', name: 'log4j', version: '1.2.17'
-    implementation group: 'com.liferay.portal', name: 'com.liferay.util.java', version: '2.5.12'
+    providedCompile group: 'javax.enterprise', name: 'cdi-api', version: '1.2'
+    providedCompile group: 'javax.faces', name: 'javax.faces-api', version: '2.2'
     runtimeOnly group: 'org.glassfish', name: 'javax.faces', version: '2.2.20'
-    providedCompile group: 'javax.faces', name: 'javax.faces-api', version: '2.2'        
-    compileOnly group: "com.liferay.portal", name: "release.portal.api"
-}
-
-buildService {
-    apiDir = "src/main/java"
-    osgiModule = false
+    runtimeOnly group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.ext', version: '7.0.0'
+    runtimeOnly group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.impl', version: '5.0.0'
+    compileOnly group: 'log4j', name: 'log4j', version: '1.2.17'
 }
