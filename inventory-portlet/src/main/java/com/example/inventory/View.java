@@ -2,7 +2,6 @@ package com.example.inventory;
 
 import com.example.inventory.model.Product;
 import com.example.inventory.service.ProductLocalServiceUtil;
-import com.liferay.counter.kernel.service.CounterLocalServiceUtil;
 import org.apache.log4j.Logger;
 
 import javax.faces.component.UIForm;
@@ -72,9 +71,8 @@ public class View implements Serializable {
 	}
 
 	public String addProduct() {
-		System.err.println("add product");
-		long id = CounterLocalServiceUtil.increment();
-		Product product = ProductLocalServiceUtil.createProduct(id);
+		LOGGER.debug("add product");
+		Product product = ProductLocalServiceUtil.createProduct(0);
 		product.setCode(code);
 		product.setName(name);
 		ProductLocalServiceUtil.addProduct(product);
