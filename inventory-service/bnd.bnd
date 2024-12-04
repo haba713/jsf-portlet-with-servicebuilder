@@ -1,5 +1,5 @@
 Bundle-Name: inventory-service
-Bundle-SymbolicName: inventory.service
+Bundle-SymbolicName: com.example.inventory.service
 Bundle-Version: 1.0.0
 Liferay-Require-SchemaVersion: 1.0.0
 Liferay-Service: true

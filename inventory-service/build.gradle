@@ -9,4 +9,4 @@ buildService {
 	testDir = "../inventory-test/src/testIntegration/java"
 }
 
-group = "inventory"
+group = "com.example.inventory"

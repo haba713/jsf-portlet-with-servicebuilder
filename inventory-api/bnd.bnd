@@ -1,10 +1,10 @@
 Bundle-Name: inventory-api
-Bundle-SymbolicName: inventory.api
+Bundle-SymbolicName: com.example.inventory.api
 Bundle-Version: 1.0.0
 Export-Package:\
-	inventory.exception,\
-	inventory.model,\
-	inventory.service,\
-	inventory.service.persistence
+	com.example.inventory.exception,\
+	com.example.inventory.model,\
+	com.example.inventory.service,\
+	com.example.inventory.service.persistence
 -check: EXPORTS
 -includeresource: META-INF/service.xml=../inventory-service/service.xml
