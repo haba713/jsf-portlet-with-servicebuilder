@@ -72,9 +72,8 @@ public class View implements Serializable {
 	}
 
 	public String addProduct() {
-		System.err.println("add product");
-		long id = CounterLocalServiceUtil.increment();
-		Product product = ProductLocalServiceUtil.createProduct(id);
+		LOGGER.debug("add product");
+		Product product = ProductLocalServiceUtil.createProduct(0);
 		product.setCode(code);
 		product.setName(name);
 		ProductLocalServiceUtil.addProduct(product);
