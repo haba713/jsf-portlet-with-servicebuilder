@@ -17,6 +17,7 @@ buildscript {
 }
 
 dependencies {
+    implementation project(":modules:inventory:inventory-api")
     providedCompile group: 'javax.enterprise', name: 'cdi-api', version: '1.2'
     providedCompile group: 'javax.faces', name: 'javax.faces-api', version: '2.2'
     runtimeOnly group: 'org.glassfish', name: 'javax.faces', version: '2.2.20'
