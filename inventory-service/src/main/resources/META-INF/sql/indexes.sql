@@ -1,0 +1,1 @@
+create index IX_833E1870 on Inventory_Product (code_[$COLUMN_LENGTH:75$]);

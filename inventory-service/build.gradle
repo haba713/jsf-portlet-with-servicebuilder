@@ -1,0 +1,12 @@
+dependencies {
+	api project(":modules:inventory:inventory-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../inventory-api/src/main/java"
+	testDir = "../inventory-test/src/testIntegration/java"
+}
+
+group = "inventory"

@@ -1,0 +1,10 @@
+Bundle-Name: inventory-api
+Bundle-SymbolicName: inventory.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	inventory.exception,\
+	inventory.model,\
+	inventory.service,\
+	inventory.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../inventory-service/service.xml
