@@ -45,9 +45,6 @@ task listRuntimeJars(dependsOn: findRuntimeJars) {
 task deployRuntimeJars(dependsOn: findRuntimeJars) {
     doLast {
         def destinationDir = new File(rootDir, "bundles/osgi/modules")
-        if (!destinationDir.exists()) {
-            destinationDir.mkdirs()
-        }
         findRuntimeJars.runtimeJars.each { runtimeJarPath ->
             def runtimeJarFile = new File(runtimeJarPath)
             def destinationFile = new File(destinationDir, runtimeJarFile.name)
