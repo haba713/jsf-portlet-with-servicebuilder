@@ -24,4 +24,5 @@ dependencies {
     runtimeOnly group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.ext', version: '7.0.0'
     runtimeOnly group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.impl', version: '5.0.0'
     compileOnly group: 'log4j', name: 'log4j', version: '1.2.17'
+    compileOnly group: "com.liferay.portal", name: "release.portal.api"
 }
