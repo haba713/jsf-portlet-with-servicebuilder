@@ -26,3 +26,34 @@ dependencies {
     compileOnly group: 'log4j', name: 'log4j', version: '1.2.17'
     compileOnly group: "com.liferay.portal", name: "release.portal.api"
 }
+
+task findRuntimeJars {
+    ext.runtimeJars = []
+    doLast {
+        runtimeJars = configurations.runtimeClasspath.files.findAll { file ->
+            file.name.endsWith(".jar") && file.absolutePath.contains(".gradle/caches")
+        }.collect { it.absolutePath }
+    }
+}
+
+task listRuntimeJars(dependsOn: findRuntimeJars) {
+    doLast {
+        findRuntimeJars.runtimeJars.each { println it }
+    }
+}
+
+task deployRuntimeJars(dependsOn: findRuntimeJars) {
+    doLast {
+        def destinationDir = new File(rootDir, "bundles/osgi/modules")
+        if (!destinationDir.exists()) {
+            destinationDir.mkdirs()
+        }
+        findRuntimeJars.runtimeJars.each { runtimeJarPath ->
+            def runtimeJarFile = new File(runtimeJarPath)
+            def destinationFile = new File(destinationDir, runtimeJarFile.name)
+            println "Copying ${runtimeJarFile.name} to ${destinationDir.absolutePath}"
+            java.nio.file.Files.copy(runtimeJarFile.toPath(), destinationFile.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+        }
+        println "All JAR files deployed to ${destinationDir.absolutePath}"
+    }
+}
