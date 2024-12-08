@@ -1,5 +1,26 @@
 # JSF portlet working in Liferay Portal 7.4 GA37 but not in GA125
 
+## Update 2024-12-08
+
+The issue was resolved by converting the service builder layer to an OSGI
+module and copying the following JARs into `$LIFERAY_HOME/osgi/modules/`:
+```
+$ cd $LIFERAY_HOME/osgi/modules/ && du -h *.jar
+ 20K	com.example.inventory.api.jar
+ 40K	com.example.inventory.service.jar
+604K	com.liferay.faces.alloy-4.1.2-SNAPSHOT.jar
+ 72K	com.liferay.faces.bridge.api-5.0.0.jar
+128K	com.liferay.faces.bridge.ext-7.0.2-SNAPSHOT.jar
+564K	com.liferay.faces.bridge.impl-5.0.1-SNAPSHOT.jar
+388K	com.liferay.faces.util-3.4.2-SNAPSHOT.jar
+3.1M	javax.faces-2.2.20.jar
+480K	log4j-1.2.17.jar
+```
+
+See the branch [sb-osgi][1] and [compare changes][2].
+
+Thanks a lot to @neilgriffin95 & co @ Liferay Slack channel! 🙂
+
 ## Steps for verifying the functionality in 7.4 GA37
 
 1. Create workspace. Clone and deploy the app.
@@ -39,6 +60,8 @@ at com.example.inventory.service.base.ProductLocalServiceBaseImpl.getProducts(Pr
 
 If you build service again (`blade gw buildService`), replace
 `MetadataPropertyAccessor` with `LiferayPropertyAccessor` in
-[portlet-hbm.xml][1]. Otherwise the app won't work in 7.4 GA37.
+[portlet-hbm.xml][3]. Otherwise the app won't work in 7.4 GA37.
 
-[1]: src/main/resources/META-INF/portlet-hbm.xml
+[1]: https://github.com/haba713/jsf-portlet-with-servicebuilder/tree/sb-osgi
+[2]: https://github.com/haba713/jsf-portlet-with-servicebuilder/compare/master..sb-osgi
+[3]: src/main/resources/META-INF/portlet-hbm.xml
