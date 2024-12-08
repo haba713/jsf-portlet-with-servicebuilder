@@ -1,58 +1,17 @@
 apply plugin: 'war'
 
-sourceCompatibility = 11
-targetCompatibility = 11
-
-buildscript {
-    dependencies {
-        classpath group: "com.liferay", name: "com.liferay.css.builder", version: "3.0.2"
-        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "5.0.1"
-    }
-
-    repositories {
-        maven {
-            url "https://repository-cdn.liferay.com/nexus/content/groups/public"
-        }
-    }
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-    implementation project(":modules:inventory:inventory-api")
+	providedCompile project(":modules:inventory:inventory-api")
     providedCompile group: 'javax.enterprise', name: 'cdi-api', version: '1.2'
     providedCompile group: 'javax.faces', name: 'javax.faces-api', version: '2.2'
-    runtimeOnly group: 'org.glassfish', name: 'javax.faces', version: '2.2.20'
-    runtimeOnly group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.ext', version: '7.0.0'
-    runtimeOnly group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.impl', version: '5.0.0'
+    providedCompile group: 'org.osgi', name: 'org.osgi.service.cdi', version: '1.0.1'  
+    compileOnly group: 'org.glassfish', name: 'javax.faces', version: '2.2.20'
+    compileOnly group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.ext', version: '7.0.0'
+    compileOnly group: 'com.liferay.faces', name: 'com.liferay.faces.bridge.impl', version: '5.0.0'
     compileOnly group: 'log4j', name: 'log4j', version: '1.2.17'
     compileOnly group: "com.liferay.portal", name: "release.portal.api"
-}
-
-task findJsfJars {
-    ext.jsfJars = []
-    doLast {
-        jsfJars = configurations.runtimeClasspath.files.findAll { file ->
-            file.name.endsWith(".jar")
-                // && file.absolutePath.contains(".gradle/caches")
-                && file.absolutePath.contains("faces") // only faces related jars
-        }.collect { it.absolutePath }
-    }
-}
-
-task listJsfJars(dependsOn: findJsfJars) {
-    doLast {
-        findJsfJars.jsfJars.each { println it }
-    }
-}
-
-task deployJsfJars(dependsOn: findJsfJars) {
-    doLast {
-        def destinationDir = new File(rootDir, "bundles/osgi/modules")
-        findJsfJars.jsfJars.each { jsfJarPath ->
-            def jsfJarFile = new File(jsfJarPath)
-            def destinationFile = new File(destinationDir, jsfJarFile.name)
-            println "Copying ${jsfJarFile.name} to ${destinationDir.absolutePath}"
-            java.nio.file.Files.copy(jsfJarFile.toPath(), destinationFile.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING)
-        }
-        println "All JAR files deployed to ${destinationDir.absolutePath}"
-    }
 }

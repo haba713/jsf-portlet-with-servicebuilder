@@ -11,6 +11,7 @@
 		<h3>
 			<h:outputLabel for="" value="#{msgs.product_list}" />
 		</h3>
+		<%--
         <h:dataTable value="#{View.products}" var="item" border="1">
             <h:column>
                 <f:facet name="header">
@@ -44,6 +45,7 @@
                 </td>
             </tr>
 		</table>
+		--%>
 	</h:form>
 
 </f:view>

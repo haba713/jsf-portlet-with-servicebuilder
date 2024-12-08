@@ -1,25 +1,31 @@
 package com.example.inventory;
 
 import com.example.inventory.model.Product;
-import com.example.inventory.service.ProductLocalServiceUtil;
-import org.apache.log4j.Logger;
+import com.example.inventory.service.ProductLocalService;
 
-import javax.faces.component.UIForm;
-
-import java.io.Serializable;
 import java.util.List;
 
-public class View implements Serializable {
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.portlet.faces.annotation.BridgeRequestScoped;
 
-	private static final long serialVersionUID = 1L;
+import org.osgi.service.cdi.annotations.Reference;
 
-	private static Logger LOGGER = Logger.getLogger(View.class);
+@Named
+@BridgeRequestScoped
+public class View {
+	
+	@Reference
+	@Inject ProductLocalService productLocalService;
 
-	private UIForm form;
+	//private static Logger LOGGER = Logger.getLogger(View.class);
+
+	//private UIForm form;
 	private long id;
 	private String code;
 	private String name;
 
+	/*
 	public View() {
 		this.form = new UIForm();
 	}
@@ -31,11 +37,12 @@ public class View implements Serializable {
 	public void setForm(UIForm form) {
 		this.form = form;
 	}
+	*/
 
 	public List<Product> getProducts() {
 		List<Product> products = null;
 		try {
-			products = ProductLocalServiceUtil.getProducts(0, Integer.MAX_VALUE);
+			products = productLocalService.getProducts(0, Integer.MAX_VALUE);
 			products.forEach(product -> {
 				System.err.println("product: id = " + product.getId() + ", code = " + product.getCode() + ", name = "
 						+ product.getName());
@@ -71,12 +78,12 @@ public class View implements Serializable {
 	}
 
 	public String addProduct() {
-		LOGGER.debug("add product");
-		Product product = ProductLocalServiceUtil.createProduct(0);
+		System.err.println("add product");
+		Product product = productLocalService.createProduct(0);
 		product.setCode(code);
 		product.setName(name);
-		ProductLocalServiceUtil.addProduct(product);
-		LOGGER.debug("product added with id " + id);
+		productLocalService.addProduct(product);
+		System.err.println("product added with id " + id);
 		return "ok";
 	}
 
